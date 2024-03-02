@@ -1,0 +1,36 @@
+services:
+  php:
+    image: teammates-php
+    container_name: teammates-php
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+    environment:
+      - TZ=UTC
+    entrypoint: "php-fpm"
+    volumes:
+      - ./:/var/www/teammates:rw,cached
+      - socket:/var/run/
+    secrets:
+      - source: host_ssh_key
+        target: /root/.ssh/id_rsa
+
+  nginx:
+    container_name: teammates-nginx
+    image: nginx:1.25-alpine3.18
+    ports:
+      - "${NGINX_WEB_PORT:-8383}:80"
+    volumes:
+      - ./:/var/www/teammates:cached
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - socket:/var/run/
+    depends_on:
+      - php
+
+volumes:
+  packfood_db: {}
+  socket: {}
+
+secrets:
+  host_ssh_key:
+    file: ${SSH_PRIVATE_KEY:-~/.ssh/id_rsa}
