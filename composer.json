@@ -84,6 +84,17 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "install:tools": "composer install --working-dir=./tools",
+        "test": "vendor/bin/phpunit",
+        "cs:fix": "./tools/vendor/bin/php-cs-fixer fix",
+        "analyze": [
+            "./tools/vendor/bin/phpstan",
+            "./tools/vendor/bin/php-cs-fixer fix --dry-run --diff"
+        ],
+        "build": [
+            "@analyze",
+            "@test"
         ]
     },
     "conflict": {
