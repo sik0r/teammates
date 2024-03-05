@@ -1,6 +1,6 @@
 SHELL=sh
 APP_NAME=teammates
-DOCKER_EXEC=docker exec -it ${APP_NAME}
+DOCKER_EXEC=docker exec -it teammates-php
 COMPOSE_FILE = docker compose -f compose.yaml
 
 help:
