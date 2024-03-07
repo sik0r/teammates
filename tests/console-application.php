@@ -1,6 +1,6 @@
 <?php
 
-use App\Kernel;
+use Teammates\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Dotenv\Dotenv;
 

@@ -4,7 +4,7 @@ parameters:
         - src
         - tests
     symfony:
-        container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml
+        container_xml_path: var/cache/dev/Teammates_KernelDevDebugContainer.xml
         consoleApplicationLoader: tests/console-application.php
     doctrine:
         objectManagerLoader: tests/object-manager.php
