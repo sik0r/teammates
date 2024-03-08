@@ -2,7 +2,7 @@
 
 namespace Teammates\Repository;
 
-use App\Entity\User;
+use Teammates\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
