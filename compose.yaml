@@ -15,6 +15,23 @@ services:
       - source: host_ssh_key
         target: /root/.ssh/id_rsa
 
+  messenger-consumer:
+    image: teammates-php
+    container_name: teammates-messenger-consumer
+    environment:
+      - TZ=UTC
+    entrypoint: "bin/console messenger:consume async -vvv"
+    volumes:
+      - ./:/var/www/teammates:rw,cached
+    secrets:
+      - source: host_ssh_key
+        target: /root/.ssh/id_rsa
+    restart: unless-stopped
+    depends_on:
+      - php
+      - database
+      - mailer
+
   nginx:
     container_name: teammates-nginx
     image: nginx:1.25-alpine3.18
