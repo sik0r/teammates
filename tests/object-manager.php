@@ -1,7 +1,7 @@
 <?php
 
-use Teammates\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
+use Teammates\Kernel;
 
 require __DIR__.'/../vendor/autoload.php';
 

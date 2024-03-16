@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Teammates\Entity;
 
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Teammates\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Teammates\Repository\UserRepository;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]

@@ -1,8 +1,8 @@
 <?php
 
-use Teammates\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Dotenv\Dotenv;
+use Teammates\Kernel;
 
 require __DIR__.'/../vendor/autoload.php';
 

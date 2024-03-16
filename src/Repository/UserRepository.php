@@ -2,20 +2,20 @@
 
 namespace Teammates\Repository;
 
-use Teammates\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
+use Teammates\Entity\User;
 
 /**
  * @extends ServiceEntityRepository<User>
  *
  * @implements PasswordUpgraderInterface<User>
  *
- * @method User|null find($id, $lockMode = null, $lockVersion = null)
- * @method User|null findOneBy(array $criteria, array $orderBy = null)
+ * @method null|User find($id, $lockMode = null, $lockVersion = null)
+ * @method null|User findOneBy(array $criteria, array $orderBy = null)
  * @method User[]    findAll()
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
