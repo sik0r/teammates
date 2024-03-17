@@ -38,6 +38,7 @@
         "symfony/string": "7.0.*",
         "symfony/translation": "7.0.*",
         "symfony/twig-bundle": "7.0.*",
+        "symfony/uid": "7.0.*",
         "symfony/ux-turbo": "^2.16",
         "symfony/validator": "7.0.*",
         "symfony/web-link": "7.0.*",
@@ -89,9 +90,9 @@
         ],
         "install:tools": "composer install --working-dir=./tools",
         "test": "vendor/bin/phpunit",
-        "cs:fix": "./tools/vendor/bin/php-cs-fixer fix",
+        "cs:fix": "./tools/vendor/bin/php-cs-fixer fix --diff",
         "analyze": [
-            "./tools/vendor/bin/phpstan",
+            "./tools/vendor/bin/phpstan --memory-limit=1G",
             "./tools/vendor/bin/php-cs-fixer fix --dry-run --diff"
         ],
         "build": [

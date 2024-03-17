@@ -17,6 +17,13 @@
 <body>
 {% include 'base_components/navbar.html.twig' %}
 <div class="container-fluid">
+    <div class="container">
+        {% for flash in app.flashes('success') %}
+            <div class="alert alert-success" role="alert">{{ flash }}</div>
+        {% endfor %}
+    </div>
+</div>
+<div class="container-fluid">
 {% block body %}{% endblock %}
 </div>
 {{ include('base_components/footer.html.twig') }}

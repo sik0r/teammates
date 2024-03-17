@@ -3,3 +3,9 @@ controllers:
         path: ../src/Controller/
         namespace: Teammates\Controller
     type: attribute
+
+user:
+    resource:
+        path: ../src/User/
+        namespace: Teammates\User
+    type: attribute

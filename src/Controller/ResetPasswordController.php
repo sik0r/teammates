@@ -16,9 +16,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
-use Teammates\Entity\User;
 use Teammates\Form\ChangePasswordFormType;
 use Teammates\Form\ResetPasswordRequestFormType;
+use Teammates\User\User;
 
 #[Route('/reset-password')]
 class ResetPasswordController extends AbstractController
