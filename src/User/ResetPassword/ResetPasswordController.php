@@ -1,6 +1,8 @@
 <?php
 
-namespace Teammates\Controller;
+declare(strict_types=1);
+
+namespace Teammates\User\ResetPassword;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -16,8 +18,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
-use Teammates\Form\ChangePasswordFormType;
-use Teammates\Form\ResetPasswordRequestFormType;
 use Teammates\User\User;
 
 #[Route('/reset-password')]
@@ -26,8 +26,8 @@ class ResetPasswordController extends AbstractController
     use ResetPasswordControllerTrait;
 
     public function __construct(
-        private ResetPasswordHelperInterface $resetPasswordHelper,
-        private EntityManagerInterface $entityManager
+        private readonly ResetPasswordHelperInterface $resetPasswordHelper,
+        private readonly EntityManagerInterface $entityManager,
     ) {}
 
     /**
@@ -47,7 +47,7 @@ class ResetPasswordController extends AbstractController
             );
         }
 
-        return $this->render('reset_password/request.html.twig', [
+        return $this->render('user/reset_password/request.html.twig', [
             'requestForm' => $form,
         ]);
     }
@@ -64,7 +64,7 @@ class ResetPasswordController extends AbstractController
             $resetToken = $this->resetPasswordHelper->generateFakeResetToken();
         }
 
-        return $this->render('reset_password/check_email.html.twig', [
+        return $this->render('user/reset_password/check_email.html.twig', [
             'resetToken' => $resetToken,
         ]);
     }
@@ -90,6 +90,7 @@ class ResetPasswordController extends AbstractController
         }
 
         try {
+            /** @var User $user */
             $user = $this->resetPasswordHelper->validateTokenAndFetchUser($token);
         } catch (ResetPasswordExceptionInterface $e) {
             $this->addFlash('reset_password_error', sprintf(
@@ -124,7 +125,7 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('reset_password/reset.html.twig', [
+        return $this->render('user/reset_password/reset.html.twig', [
             'resetForm' => $form,
         ]);
     }
@@ -158,9 +159,9 @@ class ResetPasswordController extends AbstractController
 
         $email = (new TemplatedEmail())
             ->from(new Address('no-reply@teammates.pl', 'Teammates'))
-            ->to($user->getEmail())
+            ->to($user->email())
             ->subject('Your password reset request')
-            ->htmlTemplate('reset_password/email.html.twig')
+            ->htmlTemplate('user/reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
             ])

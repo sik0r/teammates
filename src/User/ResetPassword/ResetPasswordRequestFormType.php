@@ -1,6 +1,8 @@
 <?php
 
-namespace Teammates\Form;
+declare(strict_types=1);
+
+namespace Teammates\User\ResetPassword;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -16,9 +18,7 @@ class ResetPasswordRequestFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'attr' => ['autocomplete' => 'email'],
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter your email',
-                    ]),
+                    new NotBlank(),
                 ],
             ])
         ;

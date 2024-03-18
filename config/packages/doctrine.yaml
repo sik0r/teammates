@@ -26,12 +26,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/User'
                 prefix: 'Teammates\User'
                 alias: User
-            App:
-                type: attribute
-                is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'Teammates\Entity'
-                alias: App
+#            App:
+#                type: attribute
+#                is_bundle: false
+#                dir: '%kernel.project_dir%/src/Entity'
+#                prefix: 'Teammates\Entity'
+#                alias: App
 
 when@test:
     doctrine:

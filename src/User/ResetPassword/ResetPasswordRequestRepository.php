@@ -1,13 +1,14 @@
 <?php
 
-namespace Teammates\Repository;
+declare(strict_types=1);
+
+namespace Teammates\User\ResetPassword;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use SymfonyCasts\Bundle\ResetPassword\Model\ResetPasswordRequestInterface;
 use SymfonyCasts\Bundle\ResetPassword\Persistence\Repository\ResetPasswordRequestRepositoryTrait;
 use SymfonyCasts\Bundle\ResetPassword\Persistence\ResetPasswordRequestRepositoryInterface;
-use Teammates\Entity\ResetPasswordRequest;
 
 /**
  * @extends ServiceEntityRepository<ResetPasswordRequest>
