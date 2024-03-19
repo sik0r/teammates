@@ -26,6 +26,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/User'
                 prefix: 'Teammates\User'
                 alias: User
+            Event:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Event'
+                prefix: 'Teammates\Event'
+                alias: User
 #            App:
 #                type: attribute
 #                is_bundle: false

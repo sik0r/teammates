@@ -6,5 +6,9 @@ namespace Teammates\User\Registration;
 
 final readonly class UserEmailVerifiedEvent
 {
-    public function __construct(public string $userId) {}
+    public function __construct(
+        public string $userId,
+        public string $email,
+        public string $username
+    ) {}
 }

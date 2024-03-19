@@ -56,6 +56,6 @@ final readonly class RegistrationProcess
 
         $this->userRepository->save($user);
 
-        $this->eventDispatcher->dispatch(new UserEmailVerifiedEvent($user->id()->toRfc4122()));
+        $this->eventDispatcher->dispatch(new UserEmailVerifiedEvent($user->id()->toRfc4122(), $user->email(), $user->username()));
     }
 }
