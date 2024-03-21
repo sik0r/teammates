@@ -9,3 +9,9 @@ user:
         path: ../src/User/
         namespace: Teammates\User
     type: attribute
+
+event:
+    resource:
+        path: ../src/Event/
+        namespace: Teammates\Event
+    type: attribute
